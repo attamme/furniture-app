@@ -1,4 +1,4 @@
-import { styles } from "@/styles/button.styles";
+import { styles } from "@/styles/button";
 import { View, Text, Pressable } from "react-native";
 
 type Props = {

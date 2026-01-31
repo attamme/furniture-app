@@ -1,7 +1,7 @@
 import { Text, View } from "react-native";
 import { Image } from "expo-image";
 import Button from "@/components/Button"
-import { styles  } from "@/styles/splash.styles";
+import { styles  } from "@/styles/splash";
 
 const SplashImage = require("@/assets/images/splash-image.png")
 
