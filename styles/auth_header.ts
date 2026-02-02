@@ -6,13 +6,13 @@ export const styles = StyleSheet.create({
         paddingTop: 50,
         flexDirection: "row",
         alignItems: "center",
-        paddingVertical: 8
+        paddingVertical: 8,
+        marginBottom: 54
 
     },
     image: {
         width: 18,
         height: 18,
-        resizeMode: "contain"
     },
     label: {
         color: colors.blue,
