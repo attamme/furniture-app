@@ -1,4 +1,5 @@
 import { StyleSheet } from "react-native";
+import { colors } from "./colors";
 
 export const styles = StyleSheet.create({
     container: {
@@ -17,10 +18,10 @@ export const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     flexDirection: 'row',
-    backgroundColor: '#4F63AC'
+    backgroundColor: colors.blue
   },
   label: {
-    color: '#fff',
+    color: colors.white,
     fontSize: 16,
     fontWeight: 700
   }

@@ -1,11 +1,13 @@
 import { Text, View } from "react-native";
+import { useRouter } from "expo-router"
 import { Image } from "expo-image";
 import Button from "@/components/Button"
-import { styles  } from "@/styles/splash";
+import { styles } from "@/styles/splash";
 
 const SplashImage = require("@/assets/images/splash-image.png")
 
 export default function Splash() {
+    const router = useRouter()
     return (
         <View style={styles.container} >
             <Image source={SplashImage} style={styles.image} />
@@ -15,8 +17,8 @@ export default function Splash() {
                 <Text style={styles.title}>Here!</Text>
             </View>
 
-            <Button label="Sign Up" />
-            <Button theme="secondary" label="Sign In" />
+            <Button label="Sign Up" onPress={ () => router.navigate("/signup")}/>
+            <Button theme="secondary" label="Sign In" onPress={ () => alert("Sign in will come soon!")}/>
 
         </View>
     );

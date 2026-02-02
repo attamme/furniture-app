@@ -1,11 +1,12 @@
 import { StyleSheet } from "react-native";
+import { colors } from "./colors";
 
 export const styles = StyleSheet.create({
     container: {
         flex: 1,
         justifyContent: "center",
         alignItems: "center",
-        backgroundColor: "#fff",
+        backgroundColor: colors.white,
         height: "100%",
         padding: 24,
         flexDirection: "column",
@@ -26,7 +27,7 @@ export const styles = StyleSheet.create({
         lineHeight: 49.48
     },
     innerTitle: {
-        color: "#FCA34D",
+        color: colors.orange,
         textDecorationLine: "underline"
     }
 })
