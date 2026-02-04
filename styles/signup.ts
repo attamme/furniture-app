@@ -7,5 +7,17 @@ export const styles = StyleSheet.create({
         backgroundColor: colors.white,
         paddingHorizontal: 24,
         paddingTop: 18
+    },
+    agreeRow: {
+        flexDirection: "row",
+        alignItems: "center"
+    },
+    agreeText: {
+        color: colors.blue,
+        marginHorizontal: 14,
+        fontSize: 14
+    },
+    agreeTextBold: {
+        fontWeight: 700
     }
 })
