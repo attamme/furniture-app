@@ -5,6 +5,7 @@ import { styles } from "@/styles/signup"
 import { useRouter } from "expo-router"
 import Input from "@/components/Input"
 import Checkbox from "@/components/Checkbox"
+import Button from "@/components/Button"
 
 export default function Signup() {
     const router = useRouter()
@@ -25,6 +26,8 @@ export default function Signup() {
                     <Text style={[styles.agreeText, styles.agreeTextBold]}>Privacy</Text>
                 </Text>
             </View>
+            <Button label="Sign Up" style={styles.submitButton} onPress={ () => alert("Congratulations on signing up!")}/>
+            
         </View>
     )
 }

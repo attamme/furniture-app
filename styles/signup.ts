@@ -6,7 +6,7 @@ export const styles = StyleSheet.create({
         flex: 1,
         backgroundColor: colors.white,
         paddingHorizontal: 24,
-        paddingTop: 18
+        paddingTop: 18,
     },
     agreeRow: {
         flexDirection: "row",
@@ -19,5 +19,8 @@ export const styles = StyleSheet.create({
     },
     agreeTextBold: {
         fontWeight: 700
+    },
+    submitButton: {
+        marginTop: 16
     }
 })

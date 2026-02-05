@@ -10,7 +10,6 @@ export const styles = StyleSheet.create({
         height: "100%",
         padding: 24,
         flexDirection: "column",
-        borderWidth: 1
     },
     image: {
         width: "100%",
