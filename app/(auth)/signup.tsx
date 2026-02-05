@@ -6,6 +6,7 @@ import { useRouter } from "expo-router"
 import Input from "@/components/Input"
 import Checkbox from "@/components/Checkbox"
 import Button from "@/components/Button"
+import Separator from "@/components/Separator"
 
 export default function Signup() {
     const router = useRouter()
@@ -27,6 +28,7 @@ export default function Signup() {
                 </Text>
             </View>
             <Button label="Sign Up" style={styles.submitButton} onPress={ () => alert("Congratulations on signing up!")}/>
+            <Separator text="Or sign up with"/>
             
         </View>
     )
