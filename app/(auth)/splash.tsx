@@ -18,7 +18,7 @@ export default function Splash() {
             </View>
 
             <Button label="Sign Up" onPress={ () => router.navigate("/signup")}/>
-            <Button theme="secondary" label="Sign In" onPress={ () => alert("Sign in will come soon!")}/>
+            <Button theme="secondary" label="Sign In" onPress={ () => router.navigate("/signin")}/>
 
         </View>
     );

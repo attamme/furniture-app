@@ -14,7 +14,7 @@ export default function Signup() {
 
     return (
         <View style={styles.container}>
-            <AuthHeader label="Sign up" onBackPress={ () => router.back()}/>
+            <AuthHeader label="Sign up" onBackPress={ () => router.navigate("/(auth)/splash")}/>
             <Input label="Name" placeholder="John Doe"/>
             <Input label="E-mail" placeholder="example@gmail.com"/>
             <Input label="Password" placeholder="**********" secure/>
@@ -30,7 +30,7 @@ export default function Signup() {
             <Button label="Sign Up" style={styles.submitButton} onPress={ () => alert("Congratulations on signing up!")}/>
             <Separator />
             <Text style={styles.footerText}>Already have an account?
-                <Text style={styles.footerLink}> Sign in</Text>
+                <Text style={styles.footerLink} onPress={ () => router.navigate("/signin")}> Sign in</Text>
             </Text>
 
         </View>
