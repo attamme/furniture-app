@@ -1,5 +1,4 @@
-import { useState } from "react"
-import { Text, View, Pressable } from "react-native"
+import { View, Pressable } from "react-native"
 import { Image } from "expo-image"
 import { styles } from "@/styles/checkbox"
 

@@ -12,7 +12,7 @@ export default function Splash() {
         <View style={styles.container} >
             <Image source={SplashImage} style={styles.image} />
             <View style={styles.titleContainer}>
-                <Text style={styles.title}>You'll Find</Text>
+                <Text style={styles.title}>You&apos;ll Find</Text>
                 <Text style={[styles.title, styles.innerTitle]}>All you need</Text>
                 <Text style={styles.title}>Here!</Text>
             </View>
