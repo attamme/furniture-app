@@ -1,50 +1,93 @@
-# Welcome to your Expo app 👋
+# Furniture App
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+A furniture marketplace mobile application built with **React Native, Expo, Expo Router and TypeScript**, using **Bun** for dependencies and scripts.
 
-## Get started
+## Technology
 
-1. Install dependencies
+- **Expo SDK 57** and React Native
+- **React** and **TypeScript** (strict mode)
+- **Expo Router** for file-based navigation
+- **Bun** for package installation and script execution
 
-   ```bash
-   npm install
-   ```
+## Prerequisites
 
-2. Start the app
+Development is supported on **macOS, Windows and Linux**.
 
-   ```bash
-   npx expo start
-   ```
+Install:
 
-In the output, you'll find options to open the app in a
+- [Git](https://git-scm.com/downloads)
+- [Node.js](https://nodejs.org/) (version 22.13 or newer)
+- [Bun](https://bun.sh/docs/installation)
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
-
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
-
-## Get a fresh project
-
-When you're ready, run:
+**macOS / Linux** - install Bun:
 
 ```bash
-npm run reset-project
+curl -fsSl https://bun.sh/install | bash
 ```
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+**Windows (PowerShell)** - install Bun:
 
-## Learn more
+```powershell
+powershell -c "irm bun.sh/install.ps1 | iex"
+```
 
-To learn more about developing your project with Expo, look at the following resources:
+## Installation
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+```bash
+git clone https://github.com/attamme/furniture-app.git
+cd furniture-app
+bun install --frozen-lockfile
+```
 
-## Join the community
+## Run the app
 
-Join our community of developers creating universal apps.
+Start the development server:
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+```bash
+bun run start
+```
+
+**On a phone (iOS / Android):**
+
+1. Install **Expo Go** and sign in.
+2. Sign in to Expo on your computer with `bunx expo login`.
+3. Connect your phone and computer to the same Wi-Fi network.
+4. Scan the QR code shown in the terminal.
+
+**Android emulator (macOS / Windows / Linux):**
+
+1. Install [Android Studio](https://developer.android.com/studio) and set up an emulator.
+2. Start the emulator and run `bun run android`.
+
+**iOS Simulator (macOS only):**
+
+1. Install Xcode and an iOS Simulator.
+2. Run `bun run ios`.
+
+**Web preview:**
+
+```bash
+bun run web
+```
+
+## Project structure
+
+```text
+app/                  Screens and navigation (Expo Router)
+  (auth)/             Welcome and sign-up screens
+components/           Reusable UI components
+styles/               Styles and colors
+assets/images/        Local image assets
+app.json              Expo configuration
+package.json          Dependencies and scripts
+bun.lock              Bun lockfile
+bunfig.toml           Bun installation settings
+tsconfig.json          TypeScript configuration
+eslint.config.js      ESLint configuration
+```
+
+## References
+
+- [Expo documentation](https://docs.expo.dev/)
+- [Expo Router](https://docs.expo.dev/router/introduction/)
+- [Bun documentation](https://bun.sh/docs)
