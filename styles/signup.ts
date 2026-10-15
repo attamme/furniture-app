@@ -22,5 +22,13 @@ export const styles = StyleSheet.create({
     },
     submitButton: {
         marginTop: 16
+    },
+    footerText: {
+        color: colors.blue,
+        marginBottom: 56,
+        textAlign: "center"
+    },
+    footerLink: {
+        fontWeight: 700
     }
 })

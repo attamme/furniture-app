@@ -28,8 +28,11 @@ export default function Signup() {
                 </Text>
             </View>
             <Button label="Sign Up" style={styles.submitButton} onPress={ () => alert("Congratulations on signing up!")}/>
-            <Separator text="Or sign up with"/>
-            
+            <Separator />
+            <Text style={styles.footerText}>Already have an account?
+                <Text style={styles.footerLink}> Sign in</Text>
+            </Text>
+
         </View>
     )
 }
