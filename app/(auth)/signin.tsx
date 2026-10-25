@@ -15,7 +15,7 @@ export default function Signin() {
             <AuthHeader label="Sign in" onBackPress={ () => router.navigate("/(auth)/splash")} />
             <Input label="E-mail" placeholder="example@gmail.com" />
             <Input label="Password" placeholder="**********" secure />
-            <Button label="Sign in" style={styles.submitButton} onPress={ () => alert("Congratulations on signing in!")} />
+            <Button label="Sign in" style={styles.submitButton} onPress={ () => router.navigate("../home")} />
             <Separator />
             <Text style={styles.footerText}>Don&apos;t have an account?
                 <Text style={styles.footerLink} onPress={ () => router.navigate("/signup")}> Sign up</Text>

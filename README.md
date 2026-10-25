@@ -4,7 +4,7 @@ A furniture marketplace mobile application built with **React Native, Expo, Expo
 
 ## Technology
 
-- **Expo SDK 57** and React Native
+- **Expo SDK 58** and React Native
 - **React** and **TypeScript** (strict mode)
 - **Expo Router** for file-based navigation
 - **Bun** for package installation and script execution

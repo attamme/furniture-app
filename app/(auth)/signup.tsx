@@ -27,7 +27,7 @@ export default function Signup() {
                     <Text style={[styles.agreeText, styles.agreeTextBold]}>Privacy</Text>
                 </Text>
             </View>
-            <Button label="Sign Up" style={styles.submitButton} onPress={ () => alert("Congratulations on signing up!")}/>
+            <Button label="Sign Up" style={styles.submitButton} onPress={ () => router.navigate("../home")}/>
             <Separator />
             <Text style={styles.footerText}>Already have an account?
                 <Text style={styles.footerLink} onPress={ () => router.navigate("/signin")}> Sign in</Text>
