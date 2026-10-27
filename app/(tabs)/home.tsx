@@ -13,9 +13,19 @@ export default function Home() {
   const [selectedCategoryId, setSelectedCategoryId] = useState<number | null>(null);
 
   const filteredProducts = useMemo(() => {
-    if (selectedCategoryId === null) return products;
-    return products.filter((product) => product.category === selectedCategoryId);
-  }, [selectedCategoryId]);
+    const byCategory =
+      selectedCategoryId === null
+        ? products
+        : products.filter((product) => product.category === selectedCategoryId);
+
+    const search = keyword.trim().toLowerCase();
+
+    if (!search) return byCategory;
+
+    return byCategory.filter((product) =>
+      product.title.toLowerCase().includes(search)
+    );
+  }, [selectedCategoryId, keyword]);
 
   return (
     <SafeAreaView style={styles.container} edges={["top"]}>
