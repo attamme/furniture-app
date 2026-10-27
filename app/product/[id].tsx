@@ -11,7 +11,8 @@ import {
 import { Image } from "expo-image";
 import { Ionicons } from "@expo/vector-icons";
 import { useLocalSearchParams, useRouter } from "expo-router";
-import { SafeAreaView } from "react-native-safe-area-context";
+import { useSafeAreaInsets } from "react-native-safe-area-context";
+import Button from "@/components/Button";
 import { products } from "@/data/products";
 import { colors } from "@/styles/colors";
 
@@ -19,6 +20,7 @@ export default function ProductDetails() {
   const router = useRouter();
   const { id } = useLocalSearchParams<{ id: string }>();
   const { height } = useWindowDimensions();
+  const insets = useSafeAreaInsets();
 
   const product = useMemo(() => {
     return products.find((item) => item.id === Number(id));
@@ -28,14 +30,12 @@ export default function ProductDetails() {
 
   if (!product) {
     return (
-      <SafeAreaView style={styles.container} edges={["top"]}>
-        <View style={styles.center}>
-          <Text style={styles.notFound}>Product not found</Text>
-          <Pressable onPress={() => router.back()}>
-            <Text style={styles.backText}>Go Back</Text>
-          </Pressable>
-        </View>
-      </SafeAreaView>
+      <View style={styles.center}>
+        <Text style={styles.notFound}>Product not found</Text>
+        <Pressable onPress={() => router.back()}>
+          <Text style={styles.backText}>Go Back</Text>
+        </Pressable>
+      </View>
     );
   }
 
@@ -57,26 +57,59 @@ export default function ProductDetails() {
 
           <Text style={styles.sectionTitle}>Description</Text>
           <Text style={styles.description}>
-            Some random placeholder text for the product descriptioin.
+            A stylish and comfortable piece that fits well into any living
+            space. Its simple design makes it easy to match with different
+            furniture and interior styles, while providing comfort for
+            everyday use.
           </Text>
         </View>
 
         <View style={styles.footerSpace} />
       </ScrollView>
 
-      <SafeAreaView
-        edges={["top"]}
-        style={styles.backContainer}
-        pointerEvents="box-none"
-      >
+      <View style={[styles.overlay, { top: insets.top + 12 }]}>
         <Pressable
           onPress={() => router.back()}
-          style={styles.backButton}
+          style={styles.iconButton}
           hitSlop={10}
         >
-          <Ionicons name="chevron-back" size={24} color={colors.black} />
+          <Ionicons name="chevron-back" size={22} color={colors.black} />
         </Pressable>
-      </SafeAreaView>
+
+        <Pressable
+          onPress={() => console.log("toggle favorite")}
+          style={styles.iconButton}
+          hitSlop={10}
+        >
+          <Ionicons name="bookmark-outline" size={20} color={colors.black} />
+        </Pressable>
+      </View>
+
+      <View
+        style={[
+          styles.footer,
+          { bottom: Math.max(insets.bottom, 16) },
+        ]}
+      >
+        <View style={styles.footerButton}>
+          <Button
+            label="Contact Seller"
+            onPress={() => console.log("contact seller")}
+          />
+        </View>
+
+        <Pressable
+          onPress={() => console.log("toggle favorite")}
+          style={styles.footerIcon}
+          hitSlop={10}
+        >
+          <Ionicons
+            name="bookmark-outline"
+            size={20}
+            color={colors.black}
+          />
+        </Pressable>
+      </View>
     </View>
   );
 }
@@ -128,23 +161,51 @@ const styles = StyleSheet.create({
   footerSpace: {
     height: 120,
   },
-  backContainer: {
+  overlay: {
     position: "absolute",
-    top: 0,
-    left: 0,
-    right: 0,
-    paddingHorizontal: 16,
+    left: 16,
+    right: 16,
+    flexDirection: "row",
+    justifyContent: "space-between",
   },
-  backButton: {
+  iconButton: {
     width: 40,
     height: 40,
     borderRadius: 20,
     backgroundColor: colors.white,
-    justifyContent: "center",
+    borderWidth: 1,
+    borderColor: colors.line,
     alignItems: "center",
+    justifyContent: "center",
+  },
+  footer: {
+    position: "absolute",
+    left: 16,
+    right: 16,
+    flexDirection: "row",
+    alignItems: "center",
+    gap: 12,
+    padding: 12,
+    borderRadius: 20,
+    backgroundColor: colors.white,
+    borderWidth: 1,
+    borderColor: colors.line,
+  },
+  footerButton: {
+    flex: 1,
+  },
+  footerIcon: {
+    width: 48,
+    height: 48,
+    borderRadius: 16,
+    borderWidth: 1,
+    borderColor: colors.line,
+    alignItems: "center",
+    justifyContent: "center",
   },
   center: {
     flex: 1,
+    backgroundColor: "#F2F2F2",
     alignItems: "center",
     justifyContent: "center",
   },
