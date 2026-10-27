@@ -7,6 +7,8 @@ import {
   ScrollView,
   useWindowDimensions,
   Pressable,
+  Linking,
+  Alert,
 } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { useLocalSearchParams, useRouter } from "expo-router";
@@ -27,6 +29,33 @@ export default function ProductDetails() {
   }, [id]);
 
   const imageHeight = Math.round(height * 0.45);
+
+  async function handleContactSeller() {
+    const sellerEmail = "seller@example.com";
+    const subject = `Interested in ${product?.title}`;
+    const body = `Hi! I'm interested in your ${product?.title}. Is it still available?`;
+
+    const url = `mailto:${sellerEmail}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+
+    try {
+      const can = await Linking.canOpenURL(url);
+
+      if (!can) {
+        Alert.alert(
+          "Cannot open mail client",
+          "Please configure an email account on your device."
+        );
+        return;
+      }
+
+      await Linking.openURL(url);
+    } catch {
+      Alert.alert(
+        "Cannot open mail client",
+        "Unable to open an email application."
+      );
+    }
+  }
 
   if (!product) {
     return (
@@ -106,7 +135,7 @@ export default function ProductDetails() {
         <View style={styles.footerButton}>
           <Button
             label="Contact Seller"
-            onPress={() => console.log("contact seller")}
+            onPress={handleContactSeller}
           />
         </View>
 
