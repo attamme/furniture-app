@@ -8,11 +8,11 @@ import {
   useWindowDimensions,
   Pressable,
 } from "react-native";
-import { Image } from "expo-image";
 import { Ionicons } from "@expo/vector-icons";
 import { useLocalSearchParams, useRouter } from "expo-router";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import Button from "@/components/Button";
+import { ImageCarousel } from "@/components/ImageCarousel";
 import { products } from "@/data/products";
 import { colors } from "@/styles/colors";
 
@@ -39,16 +39,20 @@ export default function ProductDetails() {
     );
   }
 
+  const images = product.images?.length
+    ? product.images
+    : [product.image];
+
   return (
     <View style={styles.container}>
       <ScrollView
         showsVerticalScrollIndicator={false}
         contentContainerStyle={styles.scrollContent}
       >
-        <Image
-          source={{ uri: product.image }}
-          style={[styles.heroImage, { height: imageHeight }]}
-          contentFit="cover"
+        <ImageCarousel
+          key={product.id}
+          images={images}
+          height={imageHeight}
         />
 
         <View style={styles.card}>
@@ -73,7 +77,11 @@ export default function ProductDetails() {
           style={styles.iconButton}
           hitSlop={10}
         >
-          <Ionicons name="chevron-back" size={22} color={colors.black} />
+          <Ionicons
+            name="chevron-back"
+            size={22}
+            color={colors.black}
+          />
         </Pressable>
 
         <Pressable
@@ -81,7 +89,11 @@ export default function ProductDetails() {
           style={styles.iconButton}
           hitSlop={10}
         >
-          <Ionicons name="bookmark-outline" size={20} color={colors.black} />
+          <Ionicons
+            name="bookmark-outline"
+            size={20}
+            color={colors.black}
+          />
         </Pressable>
       </View>
 
@@ -121,10 +133,6 @@ const styles = StyleSheet.create({
   },
   scrollContent: {
     paddingBottom: 16,
-  },
-  heroImage: {
-    width: "100%",
-    backgroundColor: colors.line,
   },
   card: {
     marginTop: -18,
