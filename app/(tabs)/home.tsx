@@ -1,10 +1,12 @@
 
-import { View, Text, FlatList, StyleSheet } from "react-native";
+import { View, FlatList, StyleSheet } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { useState } from "react";
 import { Header } from "@/components/Header";
 import { CategoryBox } from "@/components/CategoryBox";
+import { ProductHomeItem } from "@/components/ProductHomeItem";
 import { categories } from "@/data/categories";
+import { products } from "@/data/products";
 
 export default function Home() {
   const [keyword, setKeyword] = useState("");
@@ -23,24 +25,32 @@ export default function Home() {
       />
 
       <FlatList
-        data={categories}
-        horizontal
-        showsHorizontalScrollIndicator={false}
-        contentContainerStyle={styles.listContent}
-        style={styles.list}
-        keyExtractor={(item) => item.title}
-        renderItem={({ item }) => (
-          <CategoryBox
-            item={item}
-            selected={(item.id ?? null) === selectedCategoryId}
-            onPress={() => setSelectedCategoryId(item.id ?? null)}
+        key="products-grid-2"
+        data={products}
+        numColumns={2}
+        keyExtractor={(item) => String(item.id)}
+        columnWrapperStyle={styles.row}
+        contentContainerStyle={styles.content}
+        showsVerticalScrollIndicator={false}
+        renderItem={({ item }) => <ProductHomeItem item={item} />}
+        ListHeaderComponent={
+          <FlatList
+            data={categories}
+            horizontal
+            showsHorizontalScrollIndicator={false}
+            contentContainerStyle={styles.categories}
+            keyExtractor={(item) => item.title}
+            renderItem={({ item }) => (
+              <CategoryBox
+                item={item}
+                selected={(item.id ?? null) === selectedCategoryId}
+                onPress={() => setSelectedCategoryId(item.id ?? null)}
+              />
+            )}
           />
-        )}
+        }
+        ListFooterComponent={<View style={{ height: 24 }} />}
       />
-
-      <View style={styles.content}>
-        <Text>Home</Text>
-      </View>
     </SafeAreaView>
   );
 }
@@ -50,17 +60,15 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "#F2F2F2",
   },
-  list: {
-    flexGrow: 0,
-  },
-  listContent: {
+  row: {
     paddingHorizontal: 16,
-    paddingTop: 8,
-    paddingBottom: 4,
+    justifyContent: "space-between",
   },
   content: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
+    paddingTop: 8,
+  },
+  categories: {
+    paddingHorizontal: 16,
+    paddingBottom: 16,
   },
 });
