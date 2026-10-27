@@ -1,7 +1,7 @@
 
 import { View, FlatList, StyleSheet } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { Header } from "@/components/Header";
 import { CategoryBox } from "@/components/CategoryBox";
 import { ProductHomeItem } from "@/components/ProductHomeItem";
@@ -11,6 +11,11 @@ import { products } from "@/data/products";
 export default function Home() {
   const [keyword, setKeyword] = useState("");
   const [selectedCategoryId, setSelectedCategoryId] = useState<number | null>(null);
+
+  const filteredProducts = useMemo(() => {
+    if (selectedCategoryId === null) return products;
+    return products.filter((product) => product.category === selectedCategoryId);
+  }, [selectedCategoryId]);
 
   return (
     <SafeAreaView style={styles.container} edges={["top"]}>
@@ -26,7 +31,7 @@ export default function Home() {
 
       <FlatList
         key="products-grid-2"
-        data={products}
+        data={filteredProducts}
         numColumns={2}
         keyExtractor={(item) => String(item.id)}
         columnWrapperStyle={styles.row}
