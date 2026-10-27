@@ -2,6 +2,7 @@
 import { View, FlatList, StyleSheet } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { useMemo, useState } from "react";
+import { useRouter } from "expo-router";
 import { Header } from "@/components/Header";
 import { CategoryBox } from "@/components/CategoryBox";
 import { ProductHomeItem } from "@/components/ProductHomeItem";
@@ -9,6 +10,7 @@ import { categories } from "@/data/categories";
 import { products } from "@/data/products";
 
 export default function Home() {
+  const router = useRouter();
   const [keyword, setKeyword] = useState("");
   const [selectedCategoryId, setSelectedCategoryId] = useState<number | null>(null);
 
@@ -47,7 +49,17 @@ export default function Home() {
         columnWrapperStyle={styles.row}
         contentContainerStyle={styles.content}
         showsVerticalScrollIndicator={false}
-        renderItem={({ item }) => <ProductHomeItem item={item} />}
+        renderItem={({ item }) => (
+          <ProductHomeItem
+            item={item}
+            onPress={() =>
+              router.push({
+                pathname: "/product/[id]",
+                params: { id: String(item.id) },
+              })
+            }
+          />
+        )}
         ListHeaderComponent={
           <FlatList
             data={categories}
