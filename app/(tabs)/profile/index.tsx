@@ -36,14 +36,18 @@ export default function Profile() {
             title="My listings"
             subtitle="Create & manage your listings"
             icon="list-outline"
-            onPress={() => router.push("/(tabs)/profile/new-listing")}
+            onPress={() =>
+              router.push("/(tabs)/profile/my-listings")
+            }
           />
 
           <ListItem
             title="Settings"
             subtitle="Personal information & help center"
             icon="settings-outline"
-            onPress={() => router.push("/(tabs)/profile/settings")}
+            onPress={() =>
+              router.push("/(tabs)/profile/settings")
+            }
           />
         </View>
 
