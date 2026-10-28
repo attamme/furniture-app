@@ -1,13 +1,6 @@
-
 import { styles } from "@/styles/input";
 import { useMemo, useState } from "react";
-import {
-  View,
-  Text,
-  TextInput,
-  Pressable,
-  type KeyboardTypeOptions,
-} from "react-native";
+import { View, Text, TextInput, Pressable, type KeyboardTypeOptions } from "react-native";
 import { Image } from "expo-image";
 
 const EyeImage = require("@/assets/images/eye.png");
@@ -23,20 +16,10 @@ type Props = {
   autoCapitalize?: "none" | "sentences" | "words" | "characters";
 };
 
-export default function Input({
-  label,
-  placeholder,
-  value,
-  onChangeText,
-  secure,
-  keyboardType,
-  autoCapitalize,
-}: Props) {
+export default function Input({ label, placeholder, value, onChangeText, secure, keyboardType, autoCapitalize }: Props) {
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
-
   const showEye = !!secure;
   const secureTextEntry = secure ? !isPasswordVisible : false;
-
   const eyeSource = useMemo(() => {
     if (!showEye) return null;
     return isPasswordVisible ? EyeImage : EyeClosedImage;
@@ -45,7 +28,6 @@ export default function Input({
   return (
     <View style={styles.container}>
       <Text style={styles.label}>{label}</Text>
-
       <View style={styles.inputContainer}>
         <TextInput
           secureTextEntry={secureTextEntry}
@@ -57,7 +39,6 @@ export default function Input({
           autoCapitalize={autoCapitalize}
           style={styles.input}
         />
-
         {showEye && (
           <Pressable onPress={() => setIsPasswordVisible((v) => !v)}>
             <Image source={eyeSource} style={styles.eye} />

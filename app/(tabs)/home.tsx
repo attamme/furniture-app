@@ -1,5 +1,5 @@
 
-import { View, FlatList, StyleSheet } from "react-native";
+import { View, FlatList, StyleSheet, Keyboard, TouchableWithoutFeedback } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { useMemo, useState } from "react";
 import { useRouter } from "expo-router";
@@ -30,6 +30,7 @@ export default function Home() {
   }, [selectedCategoryId, keyword]);
 
   return (
+    <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
     <SafeAreaView style={styles.container} edges={["top"]}>
       <Header
         title="Home"
@@ -49,6 +50,7 @@ export default function Home() {
         columnWrapperStyle={styles.row}
         contentContainerStyle={styles.content}
         showsVerticalScrollIndicator={false}
+        keyboardDismissMode="on-drag"
         renderItem={({ item }) => (
           <ProductHomeItem
             item={item}
@@ -79,6 +81,7 @@ export default function Home() {
         ListFooterComponent={<View style={{ height: 24 }} />}
       />
     </SafeAreaView>
+    </TouchableWithoutFeedback>
   );
 }
 

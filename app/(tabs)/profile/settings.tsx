@@ -8,6 +8,8 @@ import {
   Linking,
   Alert,
   ScrollView,
+  Keyboard,
+  TouchableWithoutFeedback,
 } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { useRouter } from "expo-router";
@@ -42,6 +44,7 @@ export default function Settings() {
   }
 
   return (
+    <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
     <SafeAreaView style={styles.container} edges={["top"]}>
       <Header
         title="Settings"
@@ -53,6 +56,7 @@ export default function Settings() {
         contentContainerStyle={styles.content}
         showsVerticalScrollIndicator={false}
         keyboardShouldPersistTaps="handled"
+        keyboardDismissMode="on-drag"
       >
         <View style={styles.sectionHeader}>
           <Text style={styles.sectionTitle}>
@@ -118,6 +122,7 @@ export default function Settings() {
         </View>
       </ScrollView>
     </SafeAreaView>
+    </TouchableWithoutFeedback>
   );
 }
 

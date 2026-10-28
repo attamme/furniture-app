@@ -12,6 +12,8 @@ import {
   Platform,
   Alert,
   Modal,
+  Keyboard,
+  TouchableWithoutFeedback,
 } from "react-native";
 import { Image } from "expo-image";
 import { Ionicons } from "@expo/vector-icons";
@@ -88,6 +90,7 @@ export default function NewListing() {
   }
 
   return (
+    <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
     <SafeAreaView style={styles.container} edges={["top"]}>
       <Header
         title="New Listing"
@@ -102,6 +105,7 @@ export default function NewListing() {
         <ScrollView
           contentContainerStyle={styles.content}
           keyboardShouldPersistTaps="handled"
+          keyboardDismissMode="on-drag"
           showsVerticalScrollIndicator={false}
         >
           <Text style={styles.sectionTitle}>Photos</Text>
@@ -260,6 +264,7 @@ export default function NewListing() {
         </Pressable>
       </Modal>
     </SafeAreaView>
+    </TouchableWithoutFeedback>
   );
 }
 
