@@ -10,6 +10,10 @@ import { colors } from "@/styles/colors";
 export default function Profile() {
   const router = useRouter();
 
+  function handleLogout() {
+    router.replace("/(auth)/signin");
+  }
+
   const user = {
     name: "Lily Pot",
     email: "lilypot@gmail.com",
@@ -20,7 +24,7 @@ export default function Profile() {
       <Header
         title="Profile"
         rightAction="logout"
-        onRightPress={() => console.log("logout")}
+        onRightPress={handleLogout}
       />
 
       <View style={styles.content}>
@@ -44,10 +48,7 @@ export default function Profile() {
         </View>
 
         <View style={styles.bottom}>
-          <Button
-            label="Logout"
-            onPress={() => console.log("logout")}
-          />
+          <Button label="Logout" onPress={handleLogout} />
         </View>
       </View>
     </SafeAreaView>

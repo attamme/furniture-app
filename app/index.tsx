@@ -1,5 +1,6 @@
-import { Redirect } from "expo-router"
+
+import { AuthGate } from "@/components/AuthGate";
 
 export default function Index() {
-  return <Redirect href="/splash" /> // route groups like (auth) don't count as part of the URL
+  return <AuthGate />;
 }
