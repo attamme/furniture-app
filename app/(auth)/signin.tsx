@@ -1,25 +1,69 @@
-import { useState } from "react"
-import { View, Text } from "react-native"
-import AuthHeader from "@/components/AuthHeader"
-import { styles } from "@/styles/signup"
-import { useRouter } from "expo-router"
-import Input from "@/components/Input"
-import Button from "@/components/Button"
-import Separator from "@/components/Separator"
+
+import { useState } from "react";
+import { View, Text, Alert } from "react-native";
+import AuthHeader from "@/components/AuthHeader";
+import { styles } from "@/styles/signup";
+import { useRouter } from "expo-router";
+import Input from "@/components/Input";
+import Button from "@/components/Button";
+import Separator from "@/components/Separator";
 
 export default function Signin() {
-    const router = useRouter()
+  const router = useRouter();
 
-    return (
-        <View style={styles.container}>
-            <AuthHeader label="Sign in" onBackPress={ () => router.navigate("/(auth)/splash")} />
-            <Input label="E-mail" placeholder="example@gmail.com" />
-            <Input label="Password" placeholder="**********" secure />
-            <Button label="Sign in" style={styles.submitButton} onPress={ () => router.navigate("../home")} />
-            <Separator />
-            <Text style={styles.footerText}>Don&apos;t have an account?
-                <Text style={styles.footerLink} onPress={ () => router.navigate("/signup")}> Sign up</Text>
-            </Text>
-        </View>
-    )
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  function handleSignIn() {
+    if (!email.trim() || !password) {
+      Alert.alert("Please fill in all fields");
+      return;
+    }
+
+    router.navigate("/(tabs)/home");
+  }
+
+  return (
+    <View style={styles.container}>
+      <AuthHeader
+        label="Sign in"
+        onBackPress={() => router.navigate("/(auth)/splash")}
+      />
+
+      <Input
+        label="E-mail"
+        placeholder="example@gmail.com"
+        value={email}
+        onChangeText={setEmail}
+        keyboardType="email-address"
+        autoCapitalize="none"
+      />
+
+      <Input
+        label="Password"
+        placeholder="**********"
+        value={password}
+        onChangeText={setPassword}
+        secure
+      />
+
+      <Button
+        label="Sign in"
+        style={styles.submitButton}
+        onPress={handleSignIn}
+      />
+
+      <Separator />
+
+      <Text style={styles.footerText}>
+        Don&apos;t have an account?
+        <Text
+          style={styles.footerLink}
+          onPress={() => router.navigate("/signup")}
+        >
+          {" "}Sign up
+        </Text>
+      </Text>
+    </View>
+  );
 }
